@@ -10,7 +10,7 @@ export default function App() {
       <Text style={styles.header}>{ isBtnActive ? 'Well-being button' : 'Btn was clicked' }</Text>
       <StatusBar style="auto" />
       <Pressable 
-        style={styles.button} 
+        style={isBtnActive ? [styles.button, styles.red] : [styles.button, styles.blue]} 
         onPress={() => {setIsBtnActive(!isBtnActive)}}
       >
         <Text style={styles.buttonText}>{isBtnActive ? "Acive" : "Disable"}</Text>
@@ -42,12 +42,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30,
-    backgroundColor: '#F27B08',
     borderRadius: 80/2,
   },
   buttonText: {
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  red: {
+    backgroundColor: '#F27B08',
+  },
+  blue: {
+    backgroundColor: '#FFCD00',
   },
 });
