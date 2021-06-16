@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
 
 export default function App() {
   const [isBtnActive, setIsBtnActive] = useState(true);
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>{ isBtnActive ? 'Well-being button' : 'Btn was clicked' }</Text>
@@ -12,7 +13,7 @@ export default function App() {
         style={styles.button} 
         onPress={() => {setIsBtnActive(!isBtnActive)}}
       >
-        <Text style={styles.text}>{isBtnActive ? "Active" : "Disabled"}</Text>
+        <Text style={styles.buttonText}>{isBtnActive ? "Acive" : "Disable"}</Text>
       </Pressable>
     </View>
   );
@@ -36,23 +37,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    elevation: 8,
-    backgroundColor: '#FFCD00',
-    marginTop: 12,
-    width: 70,
-    height: 70,
-    padding: 70,
-    borderRadius: 50,
-
+    width: 80,
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
+    backgroundColor: '#F27B08',
+    borderRadius: 80/2,
   },
-  text: {
-    // display: 'flex',
-    // width: '100%',
-    // height: '100%',
+  buttonText: {
+    color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
-    color: 'white',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
 });
