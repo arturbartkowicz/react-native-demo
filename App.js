@@ -10,9 +10,8 @@ export default function App() {
       <StatusBar style="auto" />
       <Pressable 
         style={styles.button} 
-        onPress={() => {
-          setIsBtnActive(!isBtnActive);
-        }}>
+        onPress={() => {setIsBtnActive(!isBtnActive)}}
+      >
         <Text style={styles.text}>{isBtnActive ? "Active" : "Disabled"}</Text>
       </Pressable>
     </View>
@@ -22,7 +21,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'lightgray',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -37,21 +36,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
+    elevation: 8,
     backgroundColor: '#FFCD00',
     marginTop: 12,
     width: 70,
     height: 70,
     padding: 70,
-    borderRadius: '50%',
+    borderRadius: 50,
+
   },
   text: {
-    display: 'flex',
-    width: '100%',
-    height: '100%',
+    // display: 'flex',
+    // width: '100%',
+    // height: '100%',
     fontSize: 16,
     fontWeight: 'bold',
     color: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
