@@ -1,20 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
 
 export default function App() {
   const [isBtnActive, setIsBtnActive] = useState(true);
+  const [data, setData] = useState([]);
+
+  const test = () => {
+    return fetch('https://reactnative.dev/movies.json')
+    .then((response) => response.json())
+    .then((json) => setData(json.movies))
+    .catch((error) => {
+      console.error(error);
+    })
+  }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>{ isBtnActive ? 'Well-being button' : 'Btn was clicked' }</Text>
+      {console.log(data)}
+      <Text style={styles.header}>{ isBtnActive ? 'Well-being button' : 'Clicked Button' }</Text>
       <StatusBar style="auto" />
       <Pressable 
         style={isBtnActive ? [styles.button, styles.red] : [styles.button, styles.blue]} 
-        onPress={() => {setIsBtnActive(!isBtnActive)}}
-      >
+        onPress={() => {
+          setIsBtnActive(!isBtnActive);
+          test();
+        }}>
         <Text style={styles.buttonText}>{isBtnActive ? "Acive" : "Disable"}</Text>
       </Pressable>
+      <Button onPress={test} title={'Click me'} style={styles.margin}/>
     </View>
   );
 }
@@ -54,5 +68,8 @@ const styles = StyleSheet.create({
   },
   blue: {
     backgroundColor: '#FFCD00',
+  },
+  margin: {
+    marginTop: 20,
   },
 });
